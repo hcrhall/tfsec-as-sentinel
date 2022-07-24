@@ -14,7 +14,7 @@ resources = filter tfplan.resource_changes as _, rc {
 
 violations = filter resources as _, r {
 	r.change.after.description is null or
-	r.change.after.description is empty
+		r.change.after.description is empty
 }
 
 outcome = {
