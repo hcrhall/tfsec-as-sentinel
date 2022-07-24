@@ -19,7 +19,7 @@ violations = filter resources as _, r {
 
 outcome = {
 	"resource_violations": map violations as _, violation {
-		string(violation.address + "." + violation.change.after.name)
+		violation.address
 	},
 }
 
