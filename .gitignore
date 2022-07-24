@@ -1,0 +1,7 @@
+.DS_Store
+**/plan.json
+**/schemas.json
+**/tfplan.plan
+**/.terraform.lock.hcl
+**/.sentinel/*
+**/.terraform/*

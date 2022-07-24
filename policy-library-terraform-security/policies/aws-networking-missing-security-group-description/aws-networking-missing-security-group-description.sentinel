@@ -1,0 +1,55 @@
+import "tfplan/v2" as tfplan
+
+param actions default [
+	["no-op"],
+	["create"],
+	["update"],
+]
+
+resources = filter tfplan.resource_changes as _, rc {
+	rc.type is "aws_security_group" and
+		rc.mode is "managed" and
+		rc.change.actions in actions
+}
+
+violations = filter resources as _, r {
+	(r.change.after.description else "") is empty or
+		r.change.after.description is "Managed by Terraform"
+}
+
+outcome = {
+	"resource_violations": map violations as _, violation {
+		string(violation.address + "." + violation.change.after.name)
+	},
+}
+
+// ---------------------------------------------------
+// ID:          TFS-AWS-0001
+// Category:    Networking
+// Provider:    hashicorp/aws
+// Resource:    aws_security_group
+// Violation:   Security Group has missing description
+// Severity:    Low
+// ---------------------------------------------------
+// Solution:
+//
+// Ensure that all "aws_security_group" resources have
+// a "description" argument that describes the function
+// of the group.
+// ---------------------------------------------------
+// Example:
+//
+//   resource "aws_security_group" "allow_tls" {
+//      name        = "allow_tls"
+//    + description = "Allow TLS inbound traffic"
+//      vpc_id      = aws_vpc.main.id
+//      ...
+//   }
+// ---------------------------------------------------
+denied = rule when outcome.resource_violations is not empty {
+	outcome
+}
+
+main = rule {
+	denied
+}

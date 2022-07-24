@@ -1,0 +1,474 @@
+terraform_version = "1.2.3"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_security_group.bad_example": {
+			"address":        "aws_security_group.bad_example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "bad_example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_security_group",
+			"values": {
+				"description": "Allow Good configuration traffic",
+				"ingress": [
+					{
+						"cidr_blocks":      [],
+						"description":      "HTTP from VPC",
+						"from_port":        80,
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"protocol":         "tcp",
+						"security_groups":  [],
+						"self":             false,
+						"to_port":          80,
+					},
+				],
+				"name": "http",
+				"revoke_rules_on_delete": false,
+				"tags":     null,
+				"timeouts": null,
+			},
+		},
+		"aws_security_group.good_example": {
+			"address":        "aws_security_group.good_example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "good_example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_security_group",
+			"values": {
+				"description": "Allow inbound HTTP traffic",
+				"ingress": [
+					{
+						"cidr_blocks":      [],
+						"description":      "HTTP from VPC",
+						"from_port":        80,
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"protocol":         "tcp",
+						"security_groups":  [],
+						"self":             false,
+						"to_port":          80,
+					},
+				],
+				"name": "http",
+				"revoke_rules_on_delete": false,
+				"tags":     null,
+				"timeouts": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_security_group.bad_example": {
+		"address": "aws_security_group.bad_example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description": "Allow Good configuration traffic",
+				"ingress": [
+					{
+						"cidr_blocks":      [],
+						"description":      "HTTP from VPC",
+						"from_port":        80,
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"protocol":         "tcp",
+						"security_groups":  [],
+						"self":             false,
+						"to_port":          80,
+					},
+				],
+				"name": "http",
+				"revoke_rules_on_delete": false,
+				"tags":     null,
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"arn":    true,
+				"egress": true,
+				"id":     true,
+				"ingress": [
+					{
+						"cidr_blocks":      [],
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"security_groups":  [],
+					},
+				],
+				"name_prefix": true,
+				"owner_id":    true,
+				"tags_all":    true,
+				"vpc_id":      true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "bad_example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_security_group",
+	},
+	"aws_security_group.good_example": {
+		"address": "aws_security_group.good_example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description": "Allow inbound HTTP traffic",
+				"ingress": [
+					{
+						"cidr_blocks":      [],
+						"description":      "HTTP from VPC",
+						"from_port":        80,
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"protocol":         "tcp",
+						"security_groups":  [],
+						"self":             false,
+						"to_port":          80,
+					},
+				],
+				"name": "http",
+				"revoke_rules_on_delete": false,
+				"tags":     null,
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"arn":    true,
+				"egress": true,
+				"id":     true,
+				"ingress": [
+					{
+						"cidr_blocks":      [],
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"security_groups":  [],
+					},
+				],
+				"name_prefix": true,
+				"owner_id":    true,
+				"tags_all":    true,
+				"vpc_id":      true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "good_example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_security_group",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"name":               "aws",
+				"version_constraint": "4.22.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_security_group.bad_example",
+					"expressions": {
+						"ingress": {
+							"constant_value": [
+								{
+									"cidr_blocks":      null,
+									"description":      "HTTP from VPC",
+									"from_port":        80,
+									"ipv6_cidr_blocks": null,
+									"prefix_list_ids":  null,
+									"protocol":         "tcp",
+									"security_groups":  null,
+									"self":             null,
+									"to_port":          80,
+								},
+							],
+						},
+						"name": {
+							"constant_value": "http",
+						},
+					},
+					"mode":                "managed",
+					"name":                "bad_example",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_security_group",
+				},
+				{
+					"address": "aws_security_group.good_example",
+					"expressions": {
+						"description": {
+							"constant_value": "Allow inbound HTTP traffic",
+						},
+						"ingress": {
+							"constant_value": [
+								{
+									"cidr_blocks":      null,
+									"description":      "HTTP from VPC",
+									"from_port":        80,
+									"ipv6_cidr_blocks": null,
+									"prefix_list_ids":  null,
+									"protocol":         "tcp",
+									"security_groups":  null,
+									"self":             null,
+									"to_port":          80,
+								},
+							],
+						},
+						"name": {
+							"constant_value": "http",
+						},
+					},
+					"mode":                "managed",
+					"name":                "good_example",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_security_group",
+				},
+			],
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_security_group.bad_example",
+					"mode":           "managed",
+					"name":           "bad_example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"sensitive_values": {
+						"egress": [],
+						"ingress": [
+							{
+								"cidr_blocks":      [],
+								"ipv6_cidr_blocks": [],
+								"prefix_list_ids":  [],
+								"security_groups":  [],
+							},
+						],
+						"tags_all": {},
+					},
+					"type": "aws_security_group",
+					"values": {
+						"description": "Allow Good configuration traffic",
+						"ingress": [
+							{
+								"cidr_blocks":      [],
+								"description":      "HTTP from VPC",
+								"from_port":        80,
+								"ipv6_cidr_blocks": [],
+								"prefix_list_ids":  [],
+								"protocol":         "tcp",
+								"security_groups":  [],
+								"self":             false,
+								"to_port":          80,
+							},
+						],
+						"name": "http",
+						"revoke_rules_on_delete": false,
+						"tags":     null,
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "aws_security_group.good_example",
+					"mode":           "managed",
+					"name":           "good_example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"sensitive_values": {
+						"egress": [],
+						"ingress": [
+							{
+								"cidr_blocks":      [],
+								"ipv6_cidr_blocks": [],
+								"prefix_list_ids":  [],
+								"security_groups":  [],
+							},
+						],
+						"tags_all": {},
+					},
+					"type": "aws_security_group",
+					"values": {
+						"description": "Allow inbound HTTP traffic",
+						"ingress": [
+							{
+								"cidr_blocks":      [],
+								"description":      "HTTP from VPC",
+								"from_port":        80,
+								"ipv6_cidr_blocks": [],
+								"prefix_list_ids":  [],
+								"protocol":         "tcp",
+								"security_groups":  [],
+								"self":             false,
+								"to_port":          80,
+							},
+						],
+						"name": "http",
+						"revoke_rules_on_delete": false,
+						"tags":     null,
+						"timeouts": null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_security_group.bad_example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description": "Allow Good configuration traffic",
+					"ingress": [
+						{
+							"cidr_blocks":      [],
+							"description":      "HTTP from VPC",
+							"from_port":        80,
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"protocol":         "tcp",
+							"security_groups":  [],
+							"self":             false,
+							"to_port":          80,
+						},
+					],
+					"name": "http",
+					"revoke_rules_on_delete": false,
+					"tags":     null,
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"egress": [],
+					"ingress": [
+						{
+							"cidr_blocks":      [],
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"security_groups":  [],
+						},
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn":    true,
+					"egress": true,
+					"id":     true,
+					"ingress": [
+						{
+							"cidr_blocks":      [],
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"security_groups":  [],
+						},
+					],
+					"name_prefix": true,
+					"owner_id":    true,
+					"tags_all":    true,
+					"vpc_id":      true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "bad_example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_security_group",
+		},
+		{
+			"address": "aws_security_group.good_example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description": "Allow inbound HTTP traffic",
+					"ingress": [
+						{
+							"cidr_blocks":      [],
+							"description":      "HTTP from VPC",
+							"from_port":        80,
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"protocol":         "tcp",
+							"security_groups":  [],
+							"self":             false,
+							"to_port":          80,
+						},
+					],
+					"name": "http",
+					"revoke_rules_on_delete": false,
+					"tags":     null,
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"egress": [],
+					"ingress": [
+						{
+							"cidr_blocks":      [],
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"security_groups":  [],
+						},
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn":    true,
+					"egress": true,
+					"id":     true,
+					"ingress": [
+						{
+							"cidr_blocks":      [],
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"security_groups":  [],
+						},
+					],
+					"name_prefix": true,
+					"owner_id":    true,
+					"tags_all":    true,
+					"vpc_id":      true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "good_example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_security_group",
+		},
+	],
+	"terraform_version": "1.2.3",
+}
