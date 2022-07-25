@@ -1,0 +1,49 @@
+import "tfplan/v2" as tfplan
+
+param actions default [
+	["no-op"],
+	["create"],
+	["update"],
+]
+
+resources = filter tfplan.resource_changes as _, rc {
+	rc.type is "aws_default_vpc" and
+		rc.mode is "managed" and
+		rc.change.actions in actions
+}
+
+violations = filter resources as _, r {
+	r.type is "aws_default_vpc"
+}
+
+outcome = {
+	"resource_violations": map violations as _, violation {
+		violation.address
+	},
+}
+
+// --------------------------------------------------------
+// ID:          TFS-AWS-0003
+// Category:    Networking
+// Provider:    hashicorp/aws
+// Resource:    aws_default_vpc
+// Violation:   Default VPC resource defined
+// Severity:    High
+// --------------------------------------------------------
+// Solution:
+//
+// New resources should not be created in the default VPC
+// and the "aws_default_vpc" resource it should not be
+// present in Terraform configuration.
+// --------------------------------------------------------
+// Example:
+//
+//  - resource "aws_default_vpc" "default" {...}
+// --------------------------------------------------------
+denied = rule when outcome.resource_violations is not empty {
+	outcome
+}
+
+main = rule {
+	denied
+}
